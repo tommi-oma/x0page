@@ -1,0 +1,61 @@
+body {
+  padding: 2rem;
+}
+
+.App {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  background-color: aqua;
+}
+
+.Board {
+  background-color: black;
+  width: 800px;
+  background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px);
+  position: relative;
+}
+
+.BlueCell {
+  position: absolute;
+  display: inline-block;
+  background-color: blue;
+}
+
+.RedCell {
+  position: absolute;
+  display: inline-block;
+  background-color: red;
+}
+
+@keyframes chosenBlue {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: blue;
+  }
+}
+.ChosenBlueCell {
+  animation-name: chosenBlue;
+  animation-duration: 2s;
+  animation-iteration-count: 4;
+  animation-direction: reverse;
+}
+
+@keyframes chosenRed {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: darker(red);
+  }
+}
+.ChosenRedCell {
+  animation-name: chosenRed;
+  animation-duration: 2s;
+  animation-iteration-count: 4;
+  animation-direction: reverse;
+}
+
+/*# sourceMappingURL=/app.b7af7c5c.css.map */
