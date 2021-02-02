@@ -29851,8 +29851,6 @@ var Game = /*#__PURE__*/function () {
           var priorities = _this.calculatePriorities(_this.board);
 
           chosen = _this.chooseMove(priorities);
-          console.log(priorities);
-          console.log(_this._IndexToPosition(chosen));
           _this.board[chosen] = AI;
         }
       }
@@ -29886,15 +29884,6 @@ var Game = /*#__PURE__*/function () {
 
       for (var index = 0; index < _this.rows * _this.cols; ++index) {
         if (!board[index]) continue;
-
-        var horizontalAICells = _this.countHorizontal(board, index, AI),
-            horizontalUserCells = _this.countHorizontal(board, index, USER),
-            verticalAICells = _this.countVertical(board, index, AI),
-            verticalUserCells = _this.countVertical(board, index, USER),
-            diagonal1AICells = _this.countDiagonal1(board, index, AI),
-            diagonal1UserCells = _this.countDiagonal1(board, index, USER),
-            diagonal2AICells = _this.countDiagonal2(board, index, AI),
-            diagonal2UserCells = _this.countDiagonal2(board, index, USER);
 
         if (board[index] === AI && (_this.countHorizontal(board, index, AI) % 10 >= 5 || _this.countVertical(board, index, AI) % 10 >= 5 || _this.countDiagonal1(board, index, AI) % 10 >= 5 || _this.countDiagonal2(board, index, AI) % 10 >= 5)) {
           return _this.winner = AI;
@@ -30098,9 +30087,9 @@ var Game = /*#__PURE__*/function () {
           value += !board[ind] ? 10 : 0;
           break;
         }
-      }
+      } //if (value > 1) console.log(`Diag1 (${row}, ${col}): ${value} (${val===USER?'user':'ai'})`)
 
-      if (value > 1) console.log("Diag1 (".concat(row, ", ").concat(col, "): ").concat(value, " (").concat(val === USER ? 'user' : 'ai', ")"));
+
       return value;
     });
 
@@ -30298,10 +30287,6 @@ var Board = /*#__PURE__*/function (_React$Component) {
       var x = Math.floor(offsetX / cell_size);
       var y = Math.floor(offsetY / cell_size);
       var index = y * rows + x;
-      console.log("Clicked", {
-        x: x,
-        y: y
-      }, index);
 
       if (_this.state.board[index]) {
         return;
@@ -30324,8 +30309,6 @@ var Board = /*#__PURE__*/function (_React$Component) {
         });
       } else {
         _this.state.game.makeOpponentMove().then(function (moveResult) {
-          console.log("Opponent moved", moveResult.chosen);
-
           _this.setState({
             board: moveResult.board,
             cells: _this.createCells(moveResult.board),
@@ -30587,7 +30570,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55156" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59016" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
